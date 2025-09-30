@@ -42,7 +42,7 @@ classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline
 
-direction LR
+direction RL
 
 A[Manual Upload .pdf bills]:::interface
 
@@ -64,7 +64,7 @@ end
 
 subgraph RAG Service
 
-direction LR
+direction RL
 
 F[User CLI]:::interface
 
