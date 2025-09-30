@@ -34,7 +34,7 @@ classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline OCI Deployment
-direction TD
+direction TD %% Internal flow is Top-Down
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
 C[OCI Event Trigger / Cron Job]
@@ -45,8 +45,8 @@ class A,B,C,D etl
 end
 
 subgraph RAG Service Local Deployment
-direction TD
-F[User CLI]:::interface
+direction TD %% Internal flow is Top-Down
+F[CLI]:::interface
 I[LangChain Agent Orchestration]
 H(LLM/Tool-Calling Agent)
 E[(Milvus Vector DB)]:::db
@@ -64,8 +64,7 @@ D -- Vector Embeddings --> E;
 
 %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
 style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
-```
+style E fill:#FFF0F0,stroke:#F66,stroke-width:3px```
 
 The system is logically split into two main components based on deployment:
 
