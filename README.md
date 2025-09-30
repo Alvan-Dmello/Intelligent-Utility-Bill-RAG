@@ -28,7 +28,7 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ```mermaid
 
-graph BT
+graph TB
 
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
 
