@@ -32,7 +32,7 @@ graph TB;
 
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
 classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
-classDef db fill:#FFF0F0,stroke:#F66,stroke-width:3px; %% Style moved to class for Node E
+classDef db fill:#FFF0F0,stroke:#F66,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
 %% Define the external Milvus Vector DB first
