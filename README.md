@@ -40,7 +40,7 @@ E[(Milvus Vector DB)]:::db;
 
 %% 1. Define ETL Pipeline (to appear on the LEFT)
 subgraph ETL Pipeline
-direction; TD; 
+direction ; TD; 
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
 C[OCI Event Trigger / Cron Job]
