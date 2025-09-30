@@ -37,7 +37,7 @@ These scripts run on a scheduled job (e.g., Cron Job) on an Oracle Compute Insta
 | `auto_checker.py` | **Ingestion Orchestrator.** Connects to OCI Object Storage (via S3 endpoint) and Milvus. It iterates through the bill bucket, checks the `ETag` of each PDF against the Milvus index, and triggers vectorization *only* for new or modified files. It handles PDF text extraction (`pypdf`). |
 | `pdf_to_vector.py` | **Vectorization Core.** Takes raw text from `auto_checker.py`, chunks it using a sliding window (`CHUNK_SIZE=1000`, `CHUNK_OVERLAP=200`), applies the `search_document:` prefix for the embedding model, and performs the Milvus batch insert. |
 
-### 2. The RAG Agent (Local/Frontend Instance)
+### 2. The RAG Agent (Command Line Interface)
 
 These scripts run where the user chat interface is hosted, communicating with the deployed Milvus and LLM endpoints.
 
