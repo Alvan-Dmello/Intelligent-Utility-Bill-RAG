@@ -28,15 +28,18 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ```mermaid
 
-graph TB
+graph TB;
 
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
 classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
-classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
+classDef db fill:#FFF0F0,stroke:#F66,stroke-width:3px; %% Style moved to class for Node E
 classDef interface fill:#E6FFED,stroke:#0A0;
 
-%% 1. Define ETL Pipeline FIRST (to appear on the LEFT)
-subgraph ETL pipeline
+%% Define the external Milvus Vector DB first
+E[(Milvus Vector DB)]:::db;
+
+%% 1. Define ETL Pipeline (to appear on the LEFT)
+subgraph ETL Pipeline
 direction TD
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
@@ -47,28 +50,27 @@ A --> B --> C --> D;
 class A,B,C,D etl
 end
 
-%% 2. Define RAG Service SECOND (to appear on the RIGHT)
+%% 2. Define RAG Service (to appear on the RIGHT)
 subgraph RAG Service
 direction TD
 F[User CLI]:::interface
 I[LangChain Agent Orchestration]
 H(LLM/Tool-Calling Agent)
-E[(Milvus Vector DB)]:::db
 
 F --> I;
 I --> H;
-H <--> E;
-H --> I;
+H <--> I; %% Agent talks to Orchestration
 
 class F,I,H rag
 end
 
-%% Link the two subgraphs
+%% Link all components to the external Milvus DB (Node E)
+
+%% ETL Link: D (Nomic-Embed) --> E (Milvus DB) - Ingestion flow
 D -- Vector Embeddings --> E;
 
-%% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
-%% style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-%% style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
+%% RAG Link: H (LLM Agent) <--> E (Milvus DB) - Query/Retrieval flow
+H <--> E;
 
 ```
 
