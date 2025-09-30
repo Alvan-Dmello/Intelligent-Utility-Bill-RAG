@@ -52,7 +52,7 @@ end
 
 %% 2. Define RAG Service (to appear on the RIGHT)
 subgraph RAG Service
-direction TD
+direction ; TD; 
 F[User CLI]:::interface
 I[LangChain Agent Orchestration]
 H(LLM/Tool-Calling Agent)
