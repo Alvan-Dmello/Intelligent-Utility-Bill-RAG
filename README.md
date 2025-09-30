@@ -31,73 +31,43 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 graph TB
 
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
-
 classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
-
 classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
-
 classDef interface fill:#E6FFED,stroke:#0A0;
 
-
-subgraph RAG Service
-
-direction TB
-
-F[User CLI]:::interface
-
-I[LangChain Agent Orchestration]
-
-H(LLM/Tool-Calling Agent)
-
-E[(Milvus Vector DB)]:::db
-
-
-
-F --> I;
-
-I --> H;
-
-H <--> E;
-
-H --> I;
-
-
-
-class F,I,H rag
-
-end
-
+%% 1. Define ETL Pipeline FIRST (to appear on the LEFT)
 subgraph ETL Pipeline
-
-direction TB
-
+direction TD
 A[Manual Upload .pdf bills]:::interface
-
 B(OCI Object Storage)
-
 C[OCI Event Trigger / Cron Job]
-
 D[PDF Text Extraction & Nomic-Embed]
 
-
-
 A --> B --> C --> D;
-
 class A,B,C,D etl
-
 end
 
+%% 2. Define RAG Service SECOND (to appear on the RIGHT)
+subgraph RAG Service
+direction TD
+F[User CLI]:::interface
+I[LangChain Agent Orchestration]
+H(LLM/Tool-Calling Agent)
+E[(Milvus Vector DB)]:::db
+
+F --> I;
+I --> H;
+H <--> E;
+H --> I;
+
+class F,I,H rag
+end
 
 %% Link the two subgraphs
-
 D -- Vector Embeddings --> E;
 
-
-
 %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
-
 %% style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-
 %% style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
 
 ```
