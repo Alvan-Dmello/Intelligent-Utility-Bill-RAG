@@ -28,44 +28,43 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ```mermaid
 graph TD
-    %% Define CSS classes for consistent styling
-    classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px; %% Light Blue for ETL
-    classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px; %% Light Yellow/Orange for RAG
-    classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px; %% Light Red/Pink for Database/Vector DB
-    classDef interface fill:#E6FFED,stroke:#0A0; %% Light Green for Interfaces
+classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
+classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
+classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
+classDef interface fill:#E6FFED,stroke:#0A0;
 
-    subgraph ETL Pipeline (OCI Deployment)
-        direction LR
-        A[Manual Upload .pdf bills]:::interface
-        B(OCI Object Storage)
-        C[OCI Event Trigger / Cron Job]
-        D[PDF Text Extraction & Nomic-Embed]
+subgraph ETL Pipeline (OCI Deployment)
+direction LR
+A[Manual Upload .pdf bills]:::interface
+B(OCI Object Storage)
+C[OCI Event Trigger / Cron Job]
+D[PDF Text Extraction & Nomic-Embed]
 
-        A --> B --> C --> D;
-        class A,B,C,D etl
-    end
-    
-    subgraph RAG Service (Local Deployment)
-        direction LR
-        F[User CLI (Command-Line Interface)]:::interface
-        I[LangChain Agent Orchestration]
-        H(LLM/Tool-Calling Agent)
-        E[(Milvus Vector DB)]:::db
+A --> B --> C --> D;
+class A,B,C,D etl
+end
 
-        F --> I;
-        I --> H;
-        H <--> E;
-        H --> I;
+subgraph RAG Service (Local Deployment)
+direction LR
+F[User CLI (Command-Line Interface)]:::interface
+I[LangChain Agent Orchestration]
+H(LLM/Tool-Calling Agent)
+E[(Milvus Vector DB)]:::db
 
-        class F,I,H rag
-    end
-    
-    %% Link the two subgraphs
-    D -- Vector Embeddings --> E;
+F --> I;
+I --> H;
+H <--> E;
+H --> I;
 
-    %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
-    style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px;
-    style E fill:#FFF0F0,stroke:#F66,stroke-width:3px;
+class F,I,H rag
+end
+
+%% Link the two subgraphs
+D -- Vector Embeddings --> E;
+
+%% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
+style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
 ```
 
 The system is logically split into two main components based on deployment:
