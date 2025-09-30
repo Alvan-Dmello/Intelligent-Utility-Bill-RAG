@@ -34,7 +34,6 @@ classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline  'SPACE'
-( OCI Deployment )
 direction LR
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
