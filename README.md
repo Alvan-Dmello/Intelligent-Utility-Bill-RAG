@@ -37,7 +37,7 @@ classDef interface fill:#E6FFED,stroke:#0A0;
 
 %% 1. Define ETL Pipeline FIRST (to appear on the LEFT)
 subgraph ETL Pipeline
-direction TD
+direction TD;
 
 
 A[Manual Upload .pdf bills]:::interface
