@@ -34,7 +34,7 @@ classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline OCI Deployment
-direction TD %% Internal flow is Top-Down
+direction TD
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
 C[OCI Event Trigger / Cron Job]
