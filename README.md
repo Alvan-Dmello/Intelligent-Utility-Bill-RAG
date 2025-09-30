@@ -63,7 +63,7 @@ end
 
 
 D -- Vector Embeddings --> E;
-c<-- Check existing data -->E
+C <-- Check existing data -->E
 
 H <--> E;
 
