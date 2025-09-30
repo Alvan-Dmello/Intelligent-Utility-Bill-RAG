@@ -96,9 +96,9 @@ D -- Vector Embeddings --> E;
 
 %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
 
-style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+%% style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
 
-style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
+%% style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
 
 ```
 
