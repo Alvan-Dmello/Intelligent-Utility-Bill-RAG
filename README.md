@@ -28,7 +28,7 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ```mermaid
 
-graph TD
+graph LR
 
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
 
@@ -42,7 +42,7 @@ classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline
 
-direction RL
+direction LR
 
 A[Manual Upload .pdf bills]:::interface
 
@@ -64,7 +64,7 @@ end
 
 subgraph RAG Service
 
-direction RL
+direction LR
 
 F[User CLI]:::interface
 
