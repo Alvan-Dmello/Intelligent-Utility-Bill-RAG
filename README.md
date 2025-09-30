@@ -26,6 +26,7 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ## 🛠️ Architecture and Deployment
 
+```mermaid
 graph TD
     %% ETL Pipeline (OCI Deployment)
     subgraph ETL Pipeline (OCI Deployment)
@@ -51,7 +52,7 @@ graph TD
     style E fill:#f9f,stroke:#333,stroke-width:2px,rx:8px,ry:8px
     style H fill:#ccf,stroke:#333,stroke-width:2px,rx:8px,ry:8px
     style D fill:#ddf,stroke:#333
-
+```
 
 The system is logically split into two main components based on deployment:
 
