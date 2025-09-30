@@ -33,7 +33,7 @@ classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
 classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
-subgraph ETL Pipeline
+subgraph ETL Pipeline OCI Deployment
 direction LR
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
@@ -44,7 +44,7 @@ A --> B --> C --> D;
 class A,B,C,D etl
 end
 
-subgraph RAG Service
+subgraph RAG Service Local Deployment
 direction LR
 F[User CLI]:::interface
 I[LangChain Agent Orchestration]
