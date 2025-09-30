@@ -63,8 +63,7 @@ end
 
 
 D -- Vector Embeddings --> E;
-C -- Check existing data -->E;
-E -- Return existing ETag list --> C
+C <-- Verify existing data -->E;
 
 H <--> E;
 
