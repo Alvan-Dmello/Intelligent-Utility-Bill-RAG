@@ -27,44 +27,84 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 ## 🛠️ Architecture and Deployment
 
 ```mermaid
-graph LR
+
+graph TD
+
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
+
 classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
+
 classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
+
 classDef interface fill:#E6FFED,stroke:#0A0;
 
-subgraph ETL Pipeline OCI Deployment
-direction TD
+
+
+subgraph ETL Pipeline
+
+direction LR
+
 A[Manual Upload .pdf bills]:::interface
+
 B(OCI Object Storage)
+
 C[OCI Event Trigger / Cron Job]
+
 D[PDF Text Extraction & Nomic-Embed]
 
+
+
 A --> B --> C --> D;
+
 class A,B,C,D etl
+
 end
 
-subgraph RAG Service Local Deployment
-direction TD %% Internal flow is Top-Down
-F[CLI]:::interface
+
+
+subgraph RAG Service
+
+direction LR
+
+F[User CLI]:::interface
+
 I[LangChain Agent Orchestration]
+
 H(LLM/Tool-Calling Agent)
+
 E[(Milvus Vector DB)]:::db
 
+
+
 F --> I;
+
 I --> H;
+
 H <--> E;
+
 H --> I;
 
+
+
 class F,I,H rag
+
 end
 
+
+
 %% Link the two subgraphs
+
 D -- Vector Embeddings --> E;
 
+
+
 %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
+
 style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-style E fill:#FFF0F0,stroke:#F66,stroke-width:3px```
+
+style E fill:#FFF0F0,stroke:#F66,stroke-width:3px
+
+```
 
 The system is logically split into two main components based on deployment:
 
