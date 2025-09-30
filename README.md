@@ -46,7 +46,7 @@ end
 
 subgraph RAG Service
 direction LR
-F[User CLI (Command-Line Interface)]:::interface
+F[User CLI]:::interface
 I[LangChain Agent Orchestration]
 H(LLM/Tool-Calling Agent)
 E[(Milvus Vector DB)]:::db
