@@ -28,30 +28,44 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 
 ```mermaid
 graph TD
-    %% ETL Pipeline (OCI Deployment)
+    %% Define CSS classes for consistent styling
+    classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px; %% Light Blue for ETL
+    classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px; %% Light Yellow/Orange for RAG
+    classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px; %% Light Red/Pink for Database/Vector DB
+    classDef interface fill:#E6FFED,stroke:#0A0; %% Light Green for Interfaces
+
     subgraph ETL Pipeline (OCI Deployment)
         direction LR
-        A[Manual Upload .pdf bills] --> B[OCI Object Storage];
-        B --> C[OCI Event Trigger / Cron Job];
-        C --> D[PDF Text Extraction & Nomic-Embed];
+        A[Manual Upload .pdf bills]:::interface
+        B(OCI Object Storage)
+        C[OCI Event Trigger / Cron Job]
+        D[PDF Text Extraction & Nomic-Embed]
+
+        A --> B --> C --> D;
+        class A,B,C,D etl
     end
     
-    %% RAG Service (Local Deployment)
     subgraph RAG Service (Local Deployment)
         direction LR
-        F[User CLI (Command-Line Interface)] --> I[LangChain Agent Orchestration];
-        I --> H(LLM/Tool-Calling Agent);
-        H <--> E((Milvus Vector DB));
+        F[User CLI (Command-Line Interface)]:::interface
+        I[LangChain Agent Orchestration]
+        H(LLM/Tool-Calling Agent)
+        E[(Milvus Vector DB)]:::db
+
+        F --> I;
+        I --> H;
+        H <--> E;
         H --> I;
+
+        class F,I,H rag
     end
     
     %% Link the two subgraphs
-    D --> E;
-    
-    %% Styling to highlight key components - Corrected Syntax (no semicolon at end of line)
-    style E fill:#f9f,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-    style H fill:#ccf,stroke:#333,stroke-width:2px,rx:8px,ry:8px
-    style D fill:#ddf,stroke:#333
+    D -- Vector Embeddings --> E;
+
+    %% Explicitly style the DB and Agent for emphasis (optional, can be removed if classes are enough)
+    style H fill:#E0E0FF,stroke:#333,stroke-width:2px,rx:8px,ry:8px;
+    style E fill:#FFF0F0,stroke:#F66,stroke-width:3px;
 ```
 
 The system is logically split into two main components based on deployment:
