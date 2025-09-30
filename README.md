@@ -42,7 +42,7 @@ classDef interface fill:#E6FFED,stroke:#0A0;
 
 subgraph ETL Pipeline
 
-direction TD
+direction LR
 
 A[Manual Upload .pdf bills]:::interface
 
