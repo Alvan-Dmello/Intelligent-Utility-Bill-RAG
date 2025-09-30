@@ -27,7 +27,7 @@ A Python-based, Retrieval-Augmented Generation (RAG) system designed to automate
 ## 🛠️ Architecture and Deployment
 
 ```mermaid
-graph TD
+graph LR
 classDef etl fill:#DDEBF7,stroke:#369,stroke-width:2px;
 classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
 classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
