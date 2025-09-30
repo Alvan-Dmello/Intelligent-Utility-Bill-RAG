@@ -36,10 +36,8 @@ classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
 %% 1. Define ETL Pipeline FIRST (to appear on the LEFT)
-subgraph ETL Pipeline
-direction TD;
-
-
+subgraph ETL pipeline
+direction TD
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
 C[OCI Event Trigger / Cron Job]
