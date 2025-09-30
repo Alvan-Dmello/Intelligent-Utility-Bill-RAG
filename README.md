@@ -33,7 +33,7 @@ classDef rag fill:#FEF0C7,stroke:#E66,stroke-width:2px;
 classDef db fill:#FCE9E9,stroke:#F00,stroke-width:3px;
 classDef interface fill:#E6FFED,stroke:#0A0;
 
-subgraph ETL Pipeline  'SPACE'
+subgraph ETL Pipeline
 direction LR
 A[Manual Upload .pdf bills]:::interface
 B(OCI Object Storage)
