@@ -59,17 +59,13 @@ H(LLM/Tool-Calling Agent)
 
 F --> I;
 I --> H;
-H <--> I; %% Agent talks to Orchestration
-
+H <--> I; 
 class F,I,H rag
 end
 
-%% Link all components to the external Milvus DB (Node E)
 
-%% ETL Link: D (Nomic-Embed) --> E (Milvus DB) - Ingestion flow
 D -- Vector Embeddings --> E;
 
-%% RAG Link: H (LLM Agent) <--> E (Milvus DB) - Query/Retrieval flow
 H <--> E;
 
 ```
