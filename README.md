@@ -44,7 +44,7 @@ A --> B --> C --> D;
 class A,B,C,D etl
 end
 
-subgraph RAG Service (Local Deployment)
+subgraph RAG Service
 direction LR
 F[User CLI (Command-Line Interface)]:::interface
 I[LangChain Agent Orchestration]
